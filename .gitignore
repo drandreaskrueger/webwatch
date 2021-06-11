@@ -1,3 +1,10 @@
+# added by me
+/config_personal.py
+/fingerprint.sha256
+/.project
+/.pydevproject
+
+# added by github:
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +134,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
