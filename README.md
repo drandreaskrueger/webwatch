@@ -26,6 +26,7 @@ pip install requests BeautifulSoup4 html5lib
 fill in webpage search and SMTP parameters in the `config_personal.py` that you copy from the `config.py` template.
 
 ### testing 
+For a clean situation, just remove the `fingerprint.sha256` file. Try this until you get it working:
 
     source env/bin/activate
     ./webwatcher.py
