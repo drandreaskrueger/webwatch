@@ -15,7 +15,7 @@ Created on 11 Jun 2021
 Then you can logout, as it will run in the background.
 '''
 
-import requests, hashlib, smtplib, time, sys
+import requests, hashlib, smtplib, time, sys, datetime
 from bs4 import BeautifulSoup 
 # from pprint import pprint
 
@@ -102,6 +102,7 @@ if __name__ == '__main__':
     # send_alert_email("aaaa", "bbbb", pageToWatch="http://...", mail=mail, www=www); exit()
     
     while True:
+        print (("%s" % (datetime.datetime.now()))[:19])
         check_compare_emailPerhaps(www['pageToWatch'], www['searchOnPage'], www['searchForLinkText'], pageFingerprintFile, mail)
         print ("\nSleeping %.0f minutes now, then trying again." % (www['sleepSeconds']/60))
         sys.stdout.flush()
