@@ -102,7 +102,7 @@ if __name__ == '__main__':
     # send_alert_email("aaaa", "bbbb", pageToWatch="http://...", mail=mail, www=www); exit()
     
     while True:
-        print (("%s" % (datetime.datetime.now()))[:19])
+        print ("\n" + "#"*50 + ("\n%s" % (datetime.datetime.now()))[:19])
         check_compare_emailPerhaps(www['pageToWatch'], www['searchOnPage'], www['searchForLinkText'], pageFingerprintFile, mail)
         print ("\nSleeping %.0f minutes now, then trying again." % (www['sleepSeconds']/60))
         sys.stdout.flush()
