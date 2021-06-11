@@ -17,7 +17,7 @@ Then you can logout, as it will run in the background.
 
 import requests, hashlib, smtplib, time, sys
 from bs4 import BeautifulSoup 
-from pprint import pprint
+# from pprint import pprint
 
 from config_personal import mail, www, mailtext
 
@@ -74,9 +74,9 @@ def compare_page(pageToWatch, pageFingerprintFile=pageFingerprintFile):
 def send_alert_email(newsha, oldsha, pageToWatch, mail, www):
 
     params = {**www, **mail, "oldsha": oldsha, "newsha": newsha, "pageToWatch": pageToWatch}
-    pprint(params)
+    # pprint(params)
     msg = mailtext.format(**params)
-    print(msg)
+    # print(msg)
     
     print ("Connecting to SMTP server")
     server = smtplib.SMTP_SSL(mail["server"], mail["port"], timeout=15)
