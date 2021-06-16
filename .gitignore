@@ -136,3 +136,5 @@ dmypy.json
 .pyre/
 
 /config_dynamic_personal.py
+/chromedriver
+/chromedriver_linux64.zip
