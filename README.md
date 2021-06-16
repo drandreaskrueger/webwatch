@@ -48,3 +48,33 @@ until you get a connection like this
 Some cloudproviders also have such a policy: "SMTP ports blocked for security reasons. To enable them ... click ... enable SMTP ports."
 
 Once that telnet command works, you'll manage. Typos in login name, or password, ... the usual.
+
+
+# webwatch_dynamic
+If parts of the webpage are generated, or dynamically loaded (JavaScript), then we must use a browser; the module `selenium` provides for that. Here used with `chromium` (*).
+
+## quickstart
+
+    source env/bin/activate
+    ./dynamic.py
+
+## preparations
+Even if it is a headless console only machine, (e.g.) chromium must be installed:
+
+    sudo apt install chromium unzip wget
+    /usr/bin/chromium --version
+    
+    # get chromedriver = see https://chromedriver.chromium.org/downloads for perfect version
+    wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip
+    unzip chromedriver_linux64.zip 
+
+    source env/bin/activate
+    pip install selenium
+    
+Then start `./dynamic.py` and google the error messages, until you get it working.
+
+## You
+For debugging a remote situation, perhaps it helps to switch OFF the `opts.add_argument("--headless")` option, and instead connect via `ssh -Y yourmachine` to your VPS, so that the X window (of the remote controlled chromium) shows up locally. 
+
+### (*) good first issue
+Selenium would probably also work with Firefox, after minor tweaks? Feel free to post a pull request if you succeed; perhaps extend the `config_dynamic_personal.py` imports for that variation. Thanks.
