@@ -56,7 +56,14 @@ If parts of the webpage are generated, or dynamically loaded (JavaScript), then 
 ## quickstart
 
     source env/bin/activate
-    ./dynamic.py
+    nohup ./dynamic.py >> nohup_dynamic.out 2>&1 &
+    
+### watch status
+
+    ps aux | grep "dynamic" | grep -v grep
+    cat nohup_dynamic.out output.csv
+    
+the first also shows you the PID for `kill PID`.
 
 ## preparations
 Even if it is a headless console only machine, (e.g.) chromium must be installed:
@@ -71,7 +78,9 @@ Even if it is a headless console only machine, (e.g.) chromium must be installed
     source env/bin/activate
     pip install selenium
     
-Then start `./dynamic.py` and google the error messages, until you get it working.
+    ./dynamic.py
+    
+Then google the error messages, until you get it working (i.e. you see "Now sleep __ minutes, then repeat ...").
 
 ## You
 For debugging a remote situation, perhaps it helps to switch OFF the `opts.add_argument("--headless")` option, and instead connect via `ssh -Y yourmachine` to your VPS, so that the X window (of the remote controlled chromium) shows up locally. 

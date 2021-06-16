@@ -12,7 +12,7 @@ Created on 16 Jun 2021
     nohup ./dynamic.py >> nohup_dynamic.out 2>&1 &
     
     ps aux | grep "dynamic" | grep -v grep
-    cat nohup_dynamic.out
+    cat nohup_dynamic.out output.csv
     
 Then you can logout, as it will run in the background.
 '''
