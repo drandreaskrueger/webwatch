@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Created on 16 Jun 2021
+Created on 16 Jun 2021, updated 18 Aug 2021
 
 @author: Andreas Krueger
 
@@ -21,9 +21,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import os, time, datetime, sys
+import requests # pip install requests
 # from pprint import pprint
 
-from config_dynamic_personal import URL, SLEEPTIME, CLASS_SEARCH, ORDER, DATAFILE, REPEAT_AFTER
+from config_dynamic_personal import URL, SLEEPTIME, CLASS_SEARCH, ORDER, DATAFILE, REPEAT_AFTER, SIMPLE_REQUEST
 
 def chromedriver(URL, sleeptime=SLEEPTIME):
     print ("Selenium chromedriver ...", end=" ")
@@ -73,19 +74,24 @@ def store_csv_row(results, order, datafile):
         f.write(("\t".join([results[name] for name in order])+"\n"))
         
         
-def dynamic_page_scraper(url, find_classes, datafile, order):
-    html_page=chromedriver(url)
+def dynamic_page_scraper(url, find_classes, datafile, order, simpleRequest=SIMPLE_REQUEST):
+    if simpleRequest:
+        html_page=requests.get(url).text
+    else:
+        html_page=chromedriver(url)
     results = parse(html_page, find_classes)
     results["DateTime"] = ("%s" % datetime.datetime.now())[:19]
+    results["WeekDay"] = "%d" % (datetime.datetime.today().weekday())
     print(results)
     store_csv_row(results, order=order, datafile=datafile)
 
 
 if __name__ == '__main__': 
+    # dynamic_page_scraper(URL, find_classes=CLASS_SEARCH, datafile=DATAFILE, order=ORDER, simpleRequest=SIMPLE_REQUEST)
     while True:
         try:
             # raise Exception("Just testing")
-            dynamic_page_scraper(URL, find_classes=CLASS_SEARCH, datafile=DATAFILE, order=ORDER)
+            dynamic_page_scraper(URL, find_classes=CLASS_SEARCH, datafile=DATAFILE, order=ORDER, simpleRequest=SIMPLE_REQUEST)
         except Exception as e:
             print("ERROR: (%s) %s" % (type(e), e))
         print ("Now sleep %.0f minutes, then repeat ..." % (REPEAT_AFTER/60))

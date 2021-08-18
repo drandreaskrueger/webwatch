@@ -1,10 +1,12 @@
 '''
-Created on 16 Jun 2021
+Created on 16 Jun 2021, updated 18 Aug 2021
 
 @author: andreas
 '''
 
-URL="https://..." # page with Javascript
+SIMPLE_REQUEST=True # True if plain HTML page; False if Javascript generated = selenium needed
+
+URL="https://..." # page url (possibly with Javascript)
 SLEEPTIME=7       # how long does the Javascript need to finish, plus some extra time, just to be sure
 
 # have a look at how the code uses this in the super simple dynamic.parse() = it can easily be extended, 

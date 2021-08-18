@@ -3,6 +3,12 @@
 /fingerprint.sha256
 /.project
 /.pydevproject
+/chromedriver
+/chromedriver_linux64.zip
+/config_dynamic_personal.py
+/config_dynamic_personal2.py
+*.csv
+
 
 # added by github:
 # Byte-compiled / optimized / DLL files
@@ -135,7 +141,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/config_dynamic_personal.py
-/chromedriver
-/chromedriver_linux64.zip
-/output.csv
